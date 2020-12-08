@@ -1,0 +1,65 @@
+{% extends 'account/base_auth.html' %}
+{% block title %} Registeration Page{% endblock %}
+{% block content %}
+<div class="register-box">
+  <div class="register-logo">
+    <a href=""><b>Expense</b> Management system</a>
+  </div>
+
+  <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg">Register for a free account</p>
+
+
+
+      <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {% include 'partials/messages.html' %}
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" value="{{fieldValues.username}}" id="usernameField" name="username"
+            placeholder="Username" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="invalid_feedback invalid-feedback" style="display: none;">
+
+        </div>
+        <p class="text-sm text-success usernameSuccessOutput"></p>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" id="emailField" value="{{fieldValues.email}}" name="email"
+            placeholder="Email" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="emailfeedbackArea invalid-feedback" style="display: none;">
+
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" name="password" id="passwordField" placeholder="Password"
+            required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <small class="mb-3 float-right showPasswordToggle"><i class="fas fa-eye"></i> SHOW</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block submit-btn">Register</button>
+      </form>
+      <!-- /.col -->
+    </div>
+  </div>
+  <!-- /.form-box -->
+</div><!-- /.card -->
+</div>
+<!-- /.register-box -->
+{% endblock content %}
